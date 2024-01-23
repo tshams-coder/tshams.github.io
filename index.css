@@ -5,12 +5,13 @@ body {
     padding: 0;
     text-align: center; /* Centering text */
     line-height: 1.6; /* Adjust line spacing for readability */
+    color: black; /* Font color */
 }
 
 /* Header and Navigation */
 header {
-    background: #333;
-    color: #fff;
+    background: #FFC0CB; /* Pink background */
+    color: black; /* Black font */
     padding: 1rem 0;
 }
 
@@ -25,7 +26,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: black; /* Black font */
     text-decoration: none;
 }
 
@@ -33,16 +34,30 @@ nav ul li a {
 img {
     max-width: 100%; /* Responsive image */
     height: auto;
+    display: block; /* To ensure centering */
+    margin: 0 auto; /* Centering image */
+}
+
+/* List items */
+ul li {
+    background-color: #FFC0CB; /* Pink background for list items */
+    display: inline-block; /* Place list items next to each other */
+    margin: 5px;
+    padding: 5px;
 }
 
 /* Footer styling */
 footer {
-    background: #333;
-    color: #fff;
+    background: #FFC0CB; /* Pink background */
+    color: black; /* Black font */
     padding: 1rem 0;
-    position: absolute;
-    bottom: 0;
     width: 100%;
+    clear: both; /* Clear floats */
+}
+
+/* Provide space above the footer */
+body > ul {
+    margin-bottom: 50px; /* Space above the footer */
 }
 
 /* Responsive design for smaller screens */
@@ -50,5 +65,9 @@ footer {
     nav ul li {
         display: block; /* Stack the menu items */
         margin: 0;
+    }
+
+    ul li {
+        display: block; /* Stack list items on small screens */
     }
 }
