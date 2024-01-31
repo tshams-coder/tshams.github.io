@@ -1,36 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="index.css">
-    <title>Steff is so SILLY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tea Cozy</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
+    <!-- Header -->
+    <header class="header">
+        <img class="logo" src="https://content.codecademy.com/courses/freelance-1/unit-4/img-tea-cozy-logo.png" alt="The Tea Cozy Logo">
+        <nav class="navbar">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href="#featured-tea">Featured Tea</a></li>
+                <li><a href="#locations">Locations</a></li>
             </ul>
         </nav>
     </header>
 
-    <h1>Steff is so SILLY</h1>
-    <p>Oh, yes she is. Yes, she is. Oh yes, she is.</p>
-    <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" alt="Happy Ice Cream"/>
+    <!-- Mission Banner -->
+    <section id="mission" class="mission-banner" style="background-image: url('https://content.codecademy.com/courses/freelance-1/unit-4/img-mission-background.jpg');">
+        <div class="mission-text">
+        <h2>Our Mission</h2>
+        <h4>Handpicked, Artisanally Curated, Free Range, Sustainable, Small Batch, Fair Trade, Organic Tea</h4>
+        </div>
+    </section>
 
-    <ul>
-        <li>She is a silly moose</li>
-        <li>She is a silly goose</li>
-        <li>She is a silly billy</li>
-        <li>She has a silly willy</li>
-    </ul>
+   <!-- Tea of the Month Section -->
+<section id="featured-tea" class="tea-of-the-month">
+    <h2>Tea of the Month</h2>
+    <h4>What's Steeping at The Tea Cozy?</h4>
+    <div class="tea-of-the-month-gallery">
+        <figure>
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-4/img-berryblitz.jpg" alt="Fall Berry Blitz Tea">
+            <figcaption>Fall Berry Blitz Tea</figcaption>
+        </figure>
+        <figure>
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-4/img-spiced-rum.jpg" alt="Spiced Rum Tea">
+            <figcaption>Spiced Rum Tea</figcaption>
+        </figure>
+        <figure>
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-4/img-donut.jpg" alt="Seasonal Donuts">
+            <figcaption>Seasonal Donuts</figcaption>
+        </figure>
+        <figure>
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-4/img-myrtle-ave.jpg" alt="Myrtle Ave Tea">
+            <figcaption>Myrtle Ave Tea</figcaption>
+        </figure>
+        <figure>
+            <img src="https://content.codecademy.com/courses/freelance-1/unit-4/img-bedford-bizarre.jpg" alt="Bedford Bizarre Tea">
+            <figcaption>Bedford Bizarre Tea</figcaption>
+        </figure>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2024 by Me. All rights reserved.</p>
+<!-- Locations Section -->
+<section id="locations" class="locations-banner" style="background-image: url('https://content.codecademy.com/courses/freelance-1/unit-4/img-locations-background.jpg');">
+    <h2>Locations</h2>
+    <div class="location-boxes"> <!-- This div wraps around each location box -->
+        <div class="location-box">
+            <h3>Downtown</h3>
+            <p>384 West 4th St<br>Suite 108<br>Portland, Maine</p>
+        </div>
+        <div class="location-box">
+            <h3>East Bayside</h3>
+            <p>3433 Phisherman's Avenue<br>(Northwest Corner)<br>Portland, Maine</p>
+        </div>
+        <div class="location-box">
+            <h3>Oakdale</h3>
+            <p>515 Crescent Avenue<br>Second Floor<br>Portland, Maine</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-tea-cozy">
+      <h2>The Tea Cozy</h2>
+       <h5><a href="mailto:contact@theteacozy.com">contact@theteacozy.com</a></h5>
+      <p>917-555-8904</p>
+    </div>
+  <p class="copyright">
+    copyright The Tea Cozy 2017
+  </p>
     </footer>
+
 </body>
 
 </html>
