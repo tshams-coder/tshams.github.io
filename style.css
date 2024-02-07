@@ -1,217 +1,133 @@
-/* Global Styles */
+html,
 body {
-    font-family: Helvetica, sans-serif;
-    font-size: 22px;
-    color: seashell;
-    background-color: black;
-    opacity: 0.9;
+  font-family: Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  background-color: white;
 }
 
-/* Header Styles */
-.header {
-    position: fixed;
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.main {
+  height: 30rem;
+  padding-top: 1rem;
+  background-image: url("https://content.codecademy.com/courses/freelance-1/unit-5/tsunami-coffee/images/bg-photo.png");
+  background-size: cover;
+}
+
+.main img {
+  width: 15rem;
+  display: block;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+nav {
+  background-color: OrangeRed;
+  color: White;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+}
+
+li {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+}
+
+.supporting,
+.rating,
+.gallery,
+.location {
+  margin: 4em auto;
+}
+
+.supporting {
+  display: flex;
+  align-items: flex-start;
+  padding: 0 1rem;
+}
+
+.supporting img {
+  height: 10%;
+  width: 10%;
+  margin-right: 5%;
+}
+
+.rating {
+  background-color: OrangeRed;
+  height: 20rem;
+  padding: 0 1rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rating h1 {
+font-size: 2.5rem;
+}
+
+.gallery img {
+  display: block;
+  width: 30%;
+  margin: 1.5%;
+  float: left;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.location {
+  text-align: center;
+  margin-bottom: 7rem;
+}
+
+.location img {
+width: 100%;
+}
+
+footer {
+  background-color: OrangeRed;
+  padding: 0 1rem;
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5em 0;
+  color: white;
+}
+
+@media (max-width: 960px) {
+  .main {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .supporting img {
+    display: none;
+  }
+}
+
+@media (max-width: 470px) {
+  .rating h1 {
+    font-size: 2rem;
+  }
+  .gallery img {
     width: 100%;
-    height: 69px; /* Set the height of the header */
-    top: 0;
-    left: 0;
-    z-index: 10; /* Ensure the header is always on top */
-    display: flex;
-    align-items: center;
-    padding: 0 10px; /* 10px gap on the left and right */
-    background-color: rgba(0, 0, 0, 0.9); /* Using RGBA for opacity on just the background color */
-    border-bottom: 1px solid seashell; /* Bottom border */
-}
-
-/* Logo within the header */
-.logo {
-    width: auto; /* Width of the logo */
-    height: 50px; /* Maintain aspect ratio */
-    margin-left: 10px; /* Ensures 10px gap from the left */
-}
-
-/* Navigation Menu */
-.navbar {
-    display: flex;
-    justify-content: flex-end; /* Aligns navigation items to the right */
-    list-style-type: none; /* Removes bullet points */
-    margin-left: auto; /* Pushes the navbar to the right */
-    padding: 0;
-    height: 100%;
-}
-
-.navbar li {
-    margin: 0 10px; /* Spacing between navigation items */
-    display: inline-block; /* Aligns items in a line */
-}
-
-.navbar a {
-    color: seashell;
-    text-decoration: underline; /* Underlined text for all navigation links */
-    font-size: 1.17em; /* Approximate size of h3 */
-    text-transform: capitalize; /* Capitalize the first letter of each word */
-}
-
-/* Ensure anchor tags in navbar have visible appearance on hover */
-.navbar a:hover {
-    text-decoration: none; /* Removes underline on hover for a change in state */
-}
-
-/* Apply a global box-sizing rule */
-*, *:before, *:after {
-    box-sizing: border-box;
-}
-
-/* Adjust body to prevent overlap with fixed header */
-body {
-    padding-top: 69px; /* Adjust if necessary to fit your design */
-}
-
-/* Mission Banner Styles */
-.mission-banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 700px; /* Height of the banner */
-    background-image: url('https://content.codecademy.com/courses/freelance-1/unit-4/img-mission-background.jpg');
-    background-size: cover;
-    background-position: center;
-}
-
-/* Black Box for Mission Text */
-.mission-text {
-    width: 100vw; /* Width of the black box */
-    background-color: black;
-    color: seashell;
-    text-align: center;
-    padding: 0px; /* Adjust padding for better text spacing */
-    opacity: 0.9; /* Adjust for desired opacity */
-}
-
-/* Tea of the Month Section */
-.tea-of-the-month {
-    width: 1200px; /* Fixed width for the section */
-    margin: 0 auto; /* Center the section on the page */
-    text-align: center; /* Center-aligns the text */
-    padding: 20px 40px; /* Top and bottom padding */
-}
-
-.tea-of-the-month h2, .tea-of-the-month h4 {
-    margin-bottom: 30px; /* Spacing between text and images */
-}
-
-.tea-of-the-month-gallery {
-    display: flex;
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    justify-content: center; /* Center-aligns items when they take up less than full width */
-    gap: 20px; /* Spacing between items */
-}
-
-.tea-of-the-month-gallery figure {
-    width: 300px; /* Width of each image/figure */
-    margin: 0; /* Remove default margin */
-}
-
-.tea-of-the-month-gallery img {
-    width: 100%; /* Makes image responsive within its container */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 300px; /* Maximum width of the image */
-    max-height: 200px; /* Maximum height of the image */
-}
-
-.tea-of-the-month-gallery figcaption {
-    margin-top: 10px; /* Spacing between image and caption */
-}
-
-@media (max-width: 999px) {
-    .tea-of-the-month {
-        width: 100%; /* Full width on smaller screens */
-        padding: 20px; /* Adjust padding for smaller screens */
-    }
-
-    .tea-of-the-month-gallery {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        align-items: center; /* Center-align items */
-    }
-}
-
-/* Locations Section */
-.locations-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 500px; /* Height of the background section */
-    background-image: url('https://content.codecademy.com/courses/freelance-1/unit-4/img-locations-background.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 20px; /* Adjust as needed for padding within the section */
-}
-
-.locations-banner h2 {
-    margin-bottom: 15px; /* Gap between the "Locations" text and the boxes below */
-}
-
-/* Location Boxes */
-.location-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 40px; /* Space between each box */
-}
-
-.location-box {
-    width: 300px; /* Width of each location box */
-    background-color: black;
-    color: seashell; /* Text color */
-    padding: 10px; /* Padding inside each box */
-    text-align: center; /* Center-align the text within the box */
-}
-
-.location-box p {
-    line-height: 2; /* Adjust this value as needed */
-}
-
-@media (max-width: 999px) {
-    .location-boxes {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-/* Footer Styles */
-.footer {
-    text-align: center; /* Center-align the content */
-    padding: 20px 0; /* Add vertical spacing */
-    background-color: black;
-    color: seashell;
-    width: 200px; /* Set width to 200px */
-    margin-left: auto; /* Center horizontally */
-    margin-right: auto; /* Center horizontally */
-    white-space: nowrap; /* Prevent text from wrapping to a new line */
-}
-
-/* Tea Cozy */
-.footer-tea-cozy {
-    width: 200px; /* Set the width to 200px */
-    height: 200px;
-    display: flex;
-    flex-direction: column; /* Stack the text vertically */
-    align-items: center; /* Center-align the text vertically */
-    margin: 0 auto; /* Center horizontally within the 200px width */
-    line-height: 300%;
-}
-
-/* Email Address (h5) */
-.footer h5 {
     margin: 0;
-}
+  }
 
-/* Phone Number */
-.footer p {
-    margin: 0;
-}
-
-/* Copyright */
-.copyright {
-    text-align: left; /* Align left */
-    margin: 0;
+  footer nav {
+    display: none
+  }
 }
