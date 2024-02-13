@@ -32,3 +32,9 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.answer-container {
+    margin-top: 20px; /* Adds space between question and answer */
+    border: 1px solid #ccc; /* Optional border */
+    padding: 15px; /* Adds padding within the answer box */
+}
