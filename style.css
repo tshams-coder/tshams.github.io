@@ -1,3 +1,6 @@
+/* At the top of your CSS file, import a font */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); 
+
 /* Basic styles for the Magic Eight Ball page */
 body {
   background-color: white;  /* Sets white background */
@@ -7,6 +10,13 @@ body {
   justify-content: center;  /* Centers vertically */ 
   min-height: 100vh;        /* Makes it take full screen height */
   margin: 0;                /* Removes default body margins */
+}
+
+h1 {
+  font-family: 'Creepster', cursive; /* Applies the magic font */
+  color: black;               
+  font-size: 3em;             /* Adjust size as desired */
+  margin-bottom: 20px;        /* Spacing below the title */
 }
 
 .container, .answer-container { 
