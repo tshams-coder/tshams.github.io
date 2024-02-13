@@ -39,7 +39,7 @@ switch (randomNumber) {
   }
 
   // 1. Hide the containers
-  document.querySelector(".container").classList.add("hidden");
+  document.querySelector(".new-answer-holder").classList.add("hidden"); // Use your ACTUAL class name
   document.querySelector(".answer-container").classList.add("hidden"); 
 
   // 2. Display the answer prominently (modify this if needed)
