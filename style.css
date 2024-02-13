@@ -31,6 +31,21 @@ h1 {
   align-items: center;    /* Center items horizontally */
 }
 
+.answer-container { 
+  background-color: rgba(0, 0, 0, 0.6);  /* Semi-transparent background */
+  color: white;            
+  border-radius: 15px;      /* Slightly rounded corners */
+  padding: 20px;           
+  margin: 15px;            /* Spacing within the container */
+  text-align: center;      
+}
+
+.answer-container h2 {  
+  font-family: 'Creepster', cursive; 
+  color: white;        
+  font-size: 2em; 
+}
+
 input[type="text"], button {
   padding: 10px;           
   margin: 5px 0;           /* Vertical space between inputs */
