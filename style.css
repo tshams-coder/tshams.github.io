@@ -1,13 +1,13 @@
-/* Import your spooky font */
+/* Import spooky font */
 @import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap'); 
 
 body {
-  background-color: white; 
+  background-color: white;
   display: flex;
   flex-direction: column; 
   align-items: center;
   justify-content: center; 
-  min-height: 100vh; 
+  min-height: 100vh;
   margin: 0; 
 }
 
@@ -19,61 +19,63 @@ h1 {
 }
 
 .image-container {
-  margin-bottom: 30px; /* Space below the image */
+  margin-bottom: 30px; /* Spacing below the image */
 }
 
 .image-container img {
-  width: 200px;  /* Adjust the width as desired */
+  width: 200px;  /* Adjust image width */
 }
 
-.question-container {
-  background-color: black;
-  color: white;
-  border-radius: 50%;
+.question-container { 
+  background-color: white; /* Or your desired background */
+  color: black;          /* Or your desired text color */  
+  border: 2px solid black; /* Example border */
   padding: 30px; 
-  margin: 15px;  
+  margin: 15px; 
   text-align: center;
 }
 
+.content-box {
+    border: 2px solid black; /* Example */
+    margin: 30px auto;       /* Centers in the middle */
+    max-width: 600px;        /* Prevent the box growing too wide */
+    padding: 20px;           /* Space around the contents */
+}
+
 .answer-container { 
-  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.6); 
   color: white;       
-  border-radius: 15px;   
+  border-radius: 15px; 
   padding: 20px;      
-  margin: 30px;  /* Adjust for spacing around the answer */ 
+  margin: 30px; 
   text-align: center;    
 }
 
 .answer-container h2 {  
- font-family: 'Creepster', cursive; 
- color: white;     
- font-size: 2em; 
+  font-family: 'Creepster', cursive; 
+  color: white;     
+  font-size: 2em; 
 }
 
+/* Styles for input fields and the button */
 input[type="text"], button {
- padding: 10px;      
- margin: 5px 0;      
- border: none;      
- border-radius: 5px;   
+  padding: 10px;
+  margin: 5px 0;  
+  border: none; 
+  border-radius: 5px; 
 }
 
 button {
- background-color: white;  
- color: black;   
- cursor: pointer; 
+  background-color: white;  
+  color: black;   
+  cursor: pointer; 
 }
 
 button:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3; 
 }
 
-/* REMOVED: Rules for .container as those styles might conflict now */
-
-/* Keep .hidden and your media query, of course */
-.hidden {
- display: none; 
-}
-
+/* Media queries for responsiveness (e.g., on smaller screens) */
 @media (max-width: 768px) { 
-  /* Your existing media query to adapt for smaller screens */
+  /* Your adjustments for smaller screens, perhaps reducing font sizes, margins, etc. */
 }
