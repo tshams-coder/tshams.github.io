@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magic Eight Ball</title>
-  <link rel="stylesheet" href="style.css"> </head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Magic Eight Ball</title>
+ <link rel="stylesheet" href="style.css"> 
+</head>
 <body>
-  <h1>Tom's Magic 8 Ball Robot Machine</h1>
-  <div class="container">
-    <input type="text" id="userName" placeholder="Enter your name...">  
-    <input type="text" id="userQuestion" placeholder="Ask a question...">
-    <button onclick="askEightBall()">Ask</button> 
-  <div class="answer-container"> <h2 id="eightBallAnswer"></h2> 
-</div>
-    </div>
+ <h1>Tom's Magic 8 Ball Robot Machine</h1>
+  <div class="image-container">
+    <img src="https://www.creativefabrica.com/wp-content/uploads/2021/06/16/billiard-ball-icon-with-number-8-Graphics-13488084-1.jpg" alt="Magic 8 Ball Image">
   </div>
-  <script src="main.js"></script> </body>
+
+ <div class="question-container"> 
+    <input type="text" id="userName" placeholder="Enter your name...">  
+    <input type="text" id="userQuestion" placeholder="Ask a question...">
+    <button onclick="askEightBall()">Ask</button> 
+ </div>
+
+  <div class="answer-container"> 
+    <h2 id="eightBallAnswer"></h2>  
+  </div> 
+
+ <script src="main.js"></script> 
+</body>
 </html>
