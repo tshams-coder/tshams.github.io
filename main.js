@@ -2,7 +2,6 @@ function askEightBall() {
   let userName = document.getElementById("userName").value; 
   let userQuestion = document.getElementById("userQuestion").value;
 
-let userQuestion = 'Will I win the lottery today?'; // Example question
 let randomNumber = Math.floor(Math.random() * 8); // Generates a random number between 0 and 7
 let eightBall = ''; // Initializes eightBall with an empty string
 
