@@ -38,5 +38,10 @@ switch (randomNumber) {
     eightBall = `${userName}, ${eightBall}`; 
   }
 
-  document.getElementById("eightBallAnswer").textContent = eightBall;
+  // 1. Hide the containers
+  document.querySelector(".container").classList.add("hidden");
+  document.querySelector(".answer-container").classList.add("hidden"); 
+
+  // 2. Display the answer prominently (modify this if needed)
+  document.getElementById("eightBallAnswer").textContent = eightBall; 
 }
