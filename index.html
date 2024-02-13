@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Magic Eight Ball</title>
- <link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball Robot Machine</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <h1>Tom's Magic 8 Ball Robot Machine</h1>
-  <div class="image-container">
-    <img src="https://www.creativefabrica.com/wp-content/uploads/2021/06/16/billiard-ball-icon-with-number-8-Graphics-13488084-1.jpg" alt="Magic 8 Ball Image">
-  </div>
+    <!-- Website Header -->
+    <header>
+        <h1>Welcome to the Magic 8 Ball Robot Machine</h1>
+        <p>Enter your name and a question, then press the answer button for your fortune.</p>
+    </header>
 
- <div class="content-box"> 
-    <input type="text" id="userName" placeholder="Enter your name...">  
-    <input type="text" id="userQuestion" placeholder="Ask a question...">
-    <button onclick="askEightBall()">Ask</button> 
- </div>
+    <!-- 8 Ball Image -->
+    <section>
+        <img src="https://www.creativefabrica.com/wp-content/uploads/2021/06/16/billiard-ball-icon-with-number-8-Graphics-13488084-1.jpg" alt="Magic 8 Ball Icon" style="display: block; margin: auto;">
+    </section>
 
-  <div class="answer-container"> 
-    <h2 id="eightBallAnswer"></h2>  
-  </div> 
+    <!-- User Input Section -->
+    <section>
+        <form id="questionForm">
+            <!-- Name Input -->
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name here">
 
- <script src="main.js"></script> 
+            <!-- Question Input -->
+            <label for="question">Your Question:</label>
+            <input type="text" id="question" name="question" placeholder="Ask a yes or no question">
+
+            <!-- Submit Button -->
+            <button type="button" id="submitBtn">Get Answer</button>
+        </form>
+    </section>
+
+    <!-- Answer Display Section -->
+    <section id="answerSection" style="display:none;">
+        <!-- The answer will be displayed here -->
+        <p id="answer"></p>
+    </section>
+
+    <!-- Placeholder for the Scripts -->
+    <!-- Placeholder for the Scripts -->
+    <script src="script.js"></script>
 </body>
 </html>
