@@ -29,6 +29,7 @@ h1 {
   display: flex;          /* Enable flexbox for internal layout */
   flex-direction: column; /* Arrange items in a column */
   align-items: center;    /* Center items horizontally */
+  margin: 50px;   /* Increase this value as desired */
 }
 
 .answer-container { 
@@ -38,6 +39,7 @@ h1 {
   padding: 20px;           
   margin: 15px;            /* Spacing within the container */
   text-align: center;      
+  margin: 30px;   /* Adjust this value for spacing around the answer */
 }
 
 .answer-container h2 {  
@@ -54,11 +56,21 @@ input[type="text"], button {
 }
 
 button {
-  background-color: #007bff;   /* Sample button color */
-  color: white;     
+  background-color: white;   /* Sample button color */
+  color: black;     
   cursor: pointer; 
 }
 
 button:hover {
     background-color: #0056b3;
 }
+
+@media (max-width: 768px) { /* Example breakpoint for tablets and smaller */
+  .container {
+    padding: 30px;  /* Reduce circle size on smaller screens */
+    margin: 20px;   /* Reduce margins */
+  }
+
+  input[type="text"], button {
+    font-size: 14px;   /* Ensure text isn't too large */
+  } 
