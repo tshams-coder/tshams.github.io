@@ -19,13 +19,16 @@ h1 {
   margin-bottom: 20px;        /* Spacing below the title */
 }
 
-.container, .answer-container { 
+.container {
   background-color: black;  
   color: white;            
-  border-radius: 50%;      /* Creates the circular shape */
-  padding: 30px;           /* Adds spacing inside the circle */
-  margin: 15px;            /* Spacing between the containers */
-  text-align: center;      /* Centers the text */
+  border-radius: 50%;     
+  padding: 30px;          
+  margin: 15px;           
+  text-align: center;    
+  display: flex;          /* Enable flexbox for internal layout */
+  flex-direction: column; /* Arrange items in a column */
+  align-items: center;    /* Center items horizontally */
 }
 
 input[type="text"], button {
