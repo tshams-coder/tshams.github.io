@@ -186,9 +186,21 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
 });
 
 fetch("words.json")
-  .then((response) => response.json())
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Failed to load words.json");
+    }
+    return response.json();
+  })
   .then((words) => {
+    if (!Array.isArray(words) || words.length === 0) {
+      throw new Error("words.json does not contain a valid array of words");
+    }
     rightGuessString = words[Math.floor(Math.random() * words.length)];
-    console.log(rightGuessString);
+    console.log("Right guess string:", rightGuessString);
     initBoard();
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+    // Handle the error, display a message to the user, or take appropriate action
   });
