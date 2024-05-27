@@ -19,6 +19,10 @@ function initBoard() {
 
     board.appendChild(row);
   }
+
+  // Disable the "Enter" button initially
+  const enterButton = document.querySelector(".keyboard-button[data-key='Enter']");
+  enterButton.disabled = true;
 }
 
 function shadeKeyBoard(letter, color) {
@@ -192,12 +196,18 @@ fetch("words.json")
     }
     return response.json();
   })
-  .then((words) => {
+  .then((data) => {
+    const words = data.words;
     if (!Array.isArray(words) || words.length === 0) {
       throw new Error("words.json does not contain a valid array of words");
     }
     rightGuessString = words[Math.floor(Math.random() * words.length)];
     console.log("Right guess string:", rightGuessString);
+
+    // Enable the "Enter" button after the word is selected
+    const enterButton = document.querySelector(".keyboard-button[data-key='Enter']");
+    enterButton.disabled = false;
+
     initBoard();
   })
   .catch((error) => {
