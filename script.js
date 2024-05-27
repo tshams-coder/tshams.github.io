@@ -1,12 +1,8 @@
-import { WORDS } from "./words.js";
-
 const NUMBER_OF_GUESSES = 6;
 let guessesRemaining = NUMBER_OF_GUESSES;
 let currentGuess = [];
 let nextLetter = 0;
-let rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
-
-console.log(rightGuessString);
+let rightGuessString = "";
 
 function initBoard() {
   let board = document.getElementById("game-board");
@@ -66,11 +62,6 @@ function checkGuess() {
     return;
   }
 
-  if (!WORDS.includes(guessString)) {
-    toastr.error("Word not in list!");
-    return;
-  }
-
   var letterColor = ["gray", "gray", "gray", "gray", "gray"];
 
   //check green
@@ -103,7 +94,7 @@ function checkGuess() {
       animateCSS(box, "flipInX");
       //shade box
       box.style.backgroundColor = letterColor[i];
-      shadeKeyBoard(guessString.charAt(i) + "", letterColor[i]);
+      shadeKeyBoard(guessString.charAt(i), letterColor[i]);
     }, delay);
   }
 
@@ -139,16 +130,13 @@ function insertLetter(pressedKey) {
 }
 
 const animateCSS = (element, animation, prefix = "animate__") =>
-  // We create a Promise and return it
   new Promise((resolve, reject) => {
     const animationName = `${prefix}${animation}`;
-    // const node = document.querySelector(element);
     const node = element;
     node.style.setProperty("--animate-duration", "0.3s");
 
     node.classList.add(`${prefix}animated`, animationName);
 
-    // When the animation ends, we clean the classes and resolve the Promise
     function handleAnimationEnd(event) {
       event.stopPropagation();
       node.classList.remove(`${prefix}animated`, animationName);
@@ -197,4 +185,10 @@ document.getElementById("keyboard-cont").addEventListener("click", (e) => {
   document.dispatchEvent(new KeyboardEvent("keyup", { key: key }));
 });
 
-initBoard();
+fetch("words.json")
+  .then((response) => response.json())
+  .then((words) => {
+    rightGuessString = words[Math.floor(Math.random() * words.length)];
+    console.log(rightGuessString);
+    initBoard();
+  });
