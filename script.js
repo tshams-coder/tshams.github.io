@@ -1,10 +1,13 @@
-const MAX_ATTEMPTS = 6;
+const MAX_ATTEMPTS = 5;
 let currentAttempt = 0;
 let currentWord = '';
+let gameOver = false;
 
 const grid = document.getElementById('grid');
-const guessInput = document.getElementById('guess-input');
-const submitButton = document.getElementById('submit-button');
+const keyboard = document.getElementById('keyboard');
+const instructionsButton = document.getElementById('instructions-button');
+const instructionsModal = document.getElementById('instructions-modal');
+const closeButton = document.getElementsByClassName('close')[0];
 
 function createGrid() {
     for (let i = 0; i < MAX_ATTEMPTS; i++) {
@@ -16,52 +19,16 @@ function createGrid() {
     }
 }
 
-function updateGrid() {
-    const cells = grid.children;
-    for (let i = 0; i < cells.length; i++) {
-        cells[i].textContent = '';
-        cells[i].classList.remove('correct', 'incorrect');
-    }
-
-    const guess = guessInput.value.toUpperCase();
-    for (let i = 0; i < guess.length; i++) {
-        const cell = cells[currentAttempt * 5 + i];
-        cell.textContent = guess[i];
-        if (guess[i] === currentWord[i]) {
-            cell.classList.add('correct');
-        } else if (currentWord.includes(guess[i])) {
-            cell.classList.add('incorrect');
-        }
-    }
+function createKeyboard() {
+    const keys = 'QWERTYUIOPASDFGHJKLZXCVBNM';
+    keys.split('').forEach(key => {
+        const keyElement = document.createElement('div');
+        keyElement.classList.add('key');
+        keyElement.textContent = key;
+        keyElement.addEventListener('click', () => handleInput(key));
+        keyboard.appendChild(keyElement);
+    });
 }
 
-fetch('words.json')
-    .then(response => response.json())
-    .then(data => {
-        const randomIndex = Math.floor(Math.random() * data.length);
-        currentWord = data[randomIndex];
-    });
-
-createGrid();
-
-submitButton.addEventListener('click', () => {
-    const guess = guessInput.value.toUpperCase();
-    if (guess.length !== 5) {
-        alert('Please enter a 5-letter word.');
-        return;
-    }
-
-    updateGrid();
-    guessInput.value = '';
-
-    if (guess === currentWord) {
-        alert('Congratulations! You guessed the word correctly!');
-        location.reload();
-    } else if (currentAttempt === MAX_ATTEMPTS - 1) {
-        alert(`Game over! The correct word was ${currentWord}.`);
-        location.reload();
-    } else {
-        currentAttempt++;
-        guessInput.focus();
-    }
-});
+function handleInput(key) {
+    if (gameOver) return;
