@@ -1,137 +1,55 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
+h1 {
+ text-align: center;
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+#game-board {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-#grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
-    margin-bottom: 20px;
+.letter-box {
+  border: 2px solid gray;
+  border-radius: 3px;
+  margin: 2px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
 }
 
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    width: 50px;
-    height: 50px;
-    border: 2px solid #ccc;
-    transition: transform 0.3s;
+.filled-box {
+  border: 2px solid black;
 }
 
-.cell.flip {
-    transform: rotateX(360deg);
+.letter-row {
+  display: flex;
 }
 
-.correct {
-    background-color: #6aaa64;
-    color: white;
+#keyboard-cont {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.incorrect {
-    background-color: #c9b458;
-    color: white;
+#keyboard-cont div {
+  display: flex;
 }
 
-#keyboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+.second-row {
+  margin: 0.5rem 0;
 }
 
-.keyboard-row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-}
-
-.key {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-weight: bold;
-    height: 50px;
-    width: 40px;
-    margin: 0 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.key:hover {
-    background-color: #e0e0e0;
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.example {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.example .cell {
-    margin-right: 5px;
-}
-
-.confetti {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #f2d74e;
-    animation: confetti 1.5s ease-in-out infinite;
-}
-
-@keyframes confetti {
-    0% {
-        transform: translate(0, 0) rotateZ(0deg);
-    }
-    100% {
-        transform: translate(100vw, 100vh) rotateZ(720deg);
-    }
+.keyboard-button {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.5rem;
+  margin: 0 2px;
+  cursor: pointer;
+  text-transform: uppercase;
 }
