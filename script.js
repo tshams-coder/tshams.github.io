@@ -86,7 +86,7 @@ function checkGameOver() {
         gameOver = true;
         setTimeout(() => {
             alert('Congratulations! You guessed the word correctly!');
-            confetti();
+            showConfetti();
         }, 1000);
     } else if (currentAttempt === MAX_ATTEMPTS - 1) {
         gameOver = true;
@@ -102,6 +102,19 @@ function showInstructions() {
 
 function hideInstructions() {
     instructionsModal.style.display = 'none';
+}
+
+function showConfetti() {
+    const container = document.querySelector('.container');
+    const numConfetti = 100;
+
+    for (let i = 0; i < numConfetti; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDelay = `${Math.random() * 2}s`;
+        container.appendChild(confetti);
+    }
 }
 
 fetch('words.json')
@@ -121,9 +134,3 @@ window.addEventListener('click', event => {
         hideInstructions();
     }
 });
-
-function confetti() {
-    // Add your preferred confetti animation library or code here
-    // For example, you can use the canvas-confetti library: https://github.com/catdad/canvas-confetti
-    // or create your own animation using CSS or JavaScript
-}
