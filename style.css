@@ -90,4 +90,34 @@ body {
 
 .close:hover,
 .close:focus {
-    color:
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.example {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.example .cell {
+    margin-right: 5px;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #f2d74e;
+    animation: confetti 1.5s ease-in-out infinite;
+}
+
+@keyframes confetti {
+    0% {
+        transform: translate(0, 0) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(100vw, 100vh) rotateZ(720deg);
+    }
+}
