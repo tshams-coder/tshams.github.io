@@ -1,60 +1,46 @@
-// Selecting elements from the DOM
-const submitBtn = document.getElementById('submitBtn'); // The submit button
-const nameInput = document.getElementById('name'); // The input field for the user's name
-const questionInput = document.getElementById('question'); // The input field for the user's question
-const answerSection = document.getElementById('answerSection'); // The section where answers are displayed
-const answerText = document.getElementById('answer'); // The paragraph within the answer section for displaying the answer
+const MAX_ATTEMPTS = 6;
+let currentAttempt = 1;
+let currentWord = '';
 
-// Array of possible answers
-const answers = [
-    "Yes, definitely!",
-    "No, certainly not.",
-    "Ask again later.",
-    "It's highly likely.",
-    "I'm not sure.",
-    "Without a doubt, yes.",
-    "My sources say no.",
-    "The outlook is good."
-];
+const guessInput = document.getElementById('guess-input');
+const submitButton = document.getElementById('submit-button');
+const feedbackDiv = document.getElementById('feedback');
 
-// Attach an event listener to the submit button
-submitBtn.addEventListener('click', function() {
-    const userName = nameInput.value; // Capture the user's name
-    const userQuestion = questionInput.value; // Capture the user's question
-    
-    // Validate that a question has been entered
-    if (userQuestion.trim() === '') {
-        alert('Please enter a question.');
-        return; // Exit the function if no question is entered
-    }
-    
-    // Randomly select an answer from the array
-    const randomIndex = Math.floor(Math.random() * answers.length);
-    const randomAnswer = answers[randomIndex];
-    
-    // Personalize the answer if the user has entered their name
-    const personalizedAnswer = userName.trim() ? `${userName}, ${randomAnswer}` : randomAnswer;
-    
-    // Display the answer in the answer section
-    answerText.innerText = personalizedAnswer;
-    answerSection.style.display = 'block'; // Make the answer section visible
-});
+fetch('words.json')
+    .then(response => response.json())
+    .then(data => {
+        const randomIndex = Math.floor(Math.random() * data.length);
+        currentWord = data[randomIndex];
+    });
 
-submitBtn.addEventListener('click', function() {
-    const userName = nameInput.value;
-    const userQuestion = questionInput.value;
-    if (userQuestion.trim() === '') {
-        alert('Please enter a question.');
+submitButton.addEventListener('click', () => {
+    const guess = guessInput.value.toUpperCase();
+    if (guess.length !== currentWord.length) {
+        alert(`Please enter a ${currentWord.length}-letter word.`);
         return;
     }
-    const randomIndex = Math.floor(Math.random() * answers.length);
-    const randomAnswer = answers[randomIndex];
-    const personalizedAnswer = userName.trim() ? `${userName}, ${randomAnswer}` : randomAnswer;
-    answerText.innerText = personalizedAnswer;
-    answerSection.style.display = 'block';
-
-    // Scroll to the answer section smoothly
-    answerSection.scrollIntoView({behavior: "smooth"});
+    
+    let feedback = '';
+    for (let i = 0; i < guess.length; i++) {
+        if (guess[i] === currentWord[i]) {
+            feedback += `<span class="correct">${guess[i]}</span>`;
+        } else if (currentWord.includes(guess[i])) {
+            feedback += `<span class="incorrect">${guess[i]}</span>`;
+        } else {
+            feedback += `<span>${guess[i]}</span>`;
+        }
+    }
+    
+    feedbackDiv.innerHTML = feedback;
+    guessInput.value = '';
+    
+    if (guess === currentWord) {
+        alert('Congratulations! You guessed the word correctly!');
+        location.reload();
+    } else if (currentAttempt === MAX_ATTEMPTS) {
+        alert(`Game over! The correct word was ${currentWord}.`);
+        location.reload();
+    } else {
+        currentAttempt++;
+    }
 });
-
-
