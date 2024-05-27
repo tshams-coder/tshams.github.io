@@ -5,9 +5,9 @@ let gameOver = false;
 
 const grid = document.getElementById('grid');
 const keyboard = document.getElementById('keyboard');
-const instructionsButton = document.getElementById('instructions-button');
 const instructionsModal = document.getElementById('instructions-modal');
 const closeButton = document.getElementsByClassName('close')[0];
+const startButton = document.getElementById('start-button');
 
 function createGrid() {
     for (let i = 0; i < MAX_ATTEMPTS; i++) {
@@ -20,13 +20,25 @@ function createGrid() {
 }
 
 function createKeyboard() {
-    const keys = 'QWERTYUIOPASDFGHJKLZXCVBNM';
-    keys.split('').forEach(key => {
-        const keyElement = document.createElement('div');
-        keyElement.classList.add('key');
-        keyElement.textContent = key;
-        keyElement.addEventListener('click', () => handleInput(key));
-        keyboard.appendChild(keyElement);
+    const keys = [
+        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+        ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']
+    ];
+
+    keys.forEach(row => {
+        const rowElement = document.createElement('div');
+        rowElement.classList.add('keyboard-row');
+
+        row.forEach(key => {
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('key');
+            keyElement.textContent = key;
+            keyElement.addEventListener('click', () => handleInput(key));
+            rowElement.appendChild(keyElement);
+        });
+
+        keyboard.appendChild(rowElement);
     });
 }
 
@@ -117,6 +129,12 @@ function showConfetti() {
     }
 }
 
+function startGame() {
+    hideInstructions();
+    createGrid();
+    createKeyboard();
+}
+
 fetch('words.json')
     .then(response => response.json())
     .then(data => {
@@ -124,13 +142,7 @@ fetch('words.json')
         currentWord = data[randomIndex];
     });
 
-createGrid();
-createKeyboard();
+showInstructions();
 
-instructionsButton.addEventListener('click', showInstructions);
 closeButton.addEventListener('click', hideInstructions);
-window.addEventListener('click', event => {
-    if (event.target === instructionsModal) {
-        hideInstructions();
-    }
-});
+startButton.addEventListener('click', startGame);
