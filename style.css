@@ -121,3 +121,37 @@ body {
         transform: translate(100vw, 100vh) rotateZ(720deg);
     }
 }
+
+/* Add these styles to your existing style.css file */
+
+#keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    width: 40px;
+    margin: 0 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: #e0e0e0;
+}
