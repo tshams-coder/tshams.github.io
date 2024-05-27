@@ -1,82 +1,38 @@
-/* General body styling */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0 10vw; /* Updated: Adding left and right padding to the body */
-    text-align: center; /* Keeps everything centered */
-    background-color: white; /* Updated: Set background color to white for all elements */
+    text-align: center;
 }
 
-
-/* Header styling */
-header {
-    background-color: white; /* Updated: Background color changed to white */
-    color: black; /* Updated: Font color changed to black */
-    padding: 2vh 0; /* Padding relative to viewport height */
-    font-family: Arial, sans-serif; /* Updated: Font family changed to Arial, sans-serif for better readability */
-    font-size: 4vw; /* Font size relative to viewport width */
-}
-
-/* Image styling */
-img {
-    width: 50vw; /* Increase the width to be more comparable to the form size */
-    max-width: 500px; /* Adjust max-width to match the form's max-width */
-    height: auto; /* Maintain aspect ratio */
-    margin: 20px auto; /* Ensure image is centered with automatic margins */
-}
-
-
-/* Form styling */
-form {
-    margin: 2vh auto; /* Centers the form on the page, margin relative to viewport height */
-    padding: 2vw; /* Padding relative to viewport width */
-    background-color: white; /* White background for the form */
-    color: black; /* Black text color for clean look */
-    display: inline-block; /* Makes the form center-align */
-    text-align: left; /* Aligns form elements to the left */
-    width: 80vw; /* Width relative to viewport width */
-    max-width: 500px; /* Maximum width of the form */
-    border: 1px solid black; /* Black border for the form */
-    border-radius: 0.5rem; /* Rounded corners for the form */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow */
-}
-
-/* Input and Button styling */
-input[type="text"],
-button {
-    width: calc(100% - 40px); /* Full width minus padding */
-    padding: 1rem;
-    margin: 1rem 0; /* Margin around inputs and button */
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 0.25rem; /* Rounded corners */
-}
-
-button {
-    background-color: black; /* Black background for the button */
-    color: white; /* White text color */
-    font-size: 1.25rem; /* Font size using rem for scalability */
-    cursor: pointer; /* Changes cursor to a pointer on hover */
-}
-
-button:hover {
-    background-color: #333; /* Darker grey on hover */
-}
-
-/* Answer section styling */
-#answerSection {
-    margin-top: 20px;
+.container {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    background-color: white; /* Set background to white */
-    display: none; /* Hidden by default */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Adds a subtle shadow */
-    font-size: 1.25rem; /* Larger font size for better readability */
-    color: black; /* Ensures text color is black for readability */
 }
 
+input {
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
 
-/* Adjusting sub-header to a regular, readable font */
-#questionForm label {
-    font-family: Arial, sans-serif; /* Regular, readable font */
-    font-size: 1.25rem; /* Larger font size for better readability */
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
 }
