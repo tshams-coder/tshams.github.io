@@ -47,9 +47,9 @@ function handleInput(key) {
 
     const currentRow = grid.children[currentAttempt];
     const cells = currentRow.children;
-    const currentGuess = Array.from(cells).map(cell => cell.textContent).join('');
 
     if (key === 'ENTER') {
+        const currentGuess = Array.from(cells).map(cell => cell.textContent).join('');
         if (currentGuess.length < 5) {
             alert('Please enter a 5-letter word.');
             return;
@@ -64,7 +64,7 @@ function handleInput(key) {
                 break;
             }
         }
-    } else if (currentGuess.length < 5) {
+    } else {
         for (let i = 0; i < cells.length; i++) {
             if (cells[i].textContent === '') {
                 cells[i].textContent = key;
