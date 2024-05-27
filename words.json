@@ -1,17 +1,12 @@
 [
     "HOTEL",
-    "RESORT",
     "SUITE",
     "LOBBY",
-    "CONCIERGE",
-    "RESERVATION",
-    "CHECKIN",
-    "CHECKOUT",
-    "AMENITIES",
-    "HOUSEKEEPING",
-    "ROOM SERVICE",
-    "MINI BAR",
-    "BELLHOP",
-    "VALET",
-    "HOSPITALITY"
+    "GUEST",
+    "STAFF",
+    "ROOM",
+    "BEACH",
+    "POOL",
+    "LINEN",
+    "LOUNGE"
 ]
