@@ -9,10 +9,39 @@ body {
     padding: 20px;
 }
 
+#grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    height: 50px;
+    border: 2px solid #ccc;
+}
+
+.correct {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.incorrect {
+    background-color: #c9b458;
+    color: white;
+}
+
 input {
     padding: 10px;
     font-size: 18px;
     margin-bottom: 10px;
+    width: 200px;
+    text-transform: uppercase;
 }
 
 button {
@@ -22,17 +51,4 @@ button {
     color: white;
     border: none;
     cursor: pointer;
-}
-
-#feedback {
-    margin-top: 20px;
-    font-size: 24px;
-}
-
-.correct {
-    color: green;
-}
-
-.incorrect {
-    color: red;
 }
