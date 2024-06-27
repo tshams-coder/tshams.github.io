@@ -4,47 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOT - Words</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
     <style>
+        /* The CSS remains the same as in the previous version */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             background-color: #f0f0f0;
+            background-image: 
+                linear-gradient(45deg, #e6e6e6 25%, transparent 25%), 
+                linear-gradient(-45deg, #e6e6e6 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #e6e6e6 75%), 
+                linear-gradient(-45deg, transparent 75%, #e6e6e6 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
         }
         h1 {
-            color: #333;
+            margin: 0;
+            font-size: 48px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Fredoka One', cursive;
+        }
+        .subtitle {
+            font-style: italic;
+            margin-top: 10px;
+        }
+        #game-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        #instructions {
+            margin-bottom: 30px;
+            text-align: left;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #instructions ul {
+            padding-left: 20px;
+        }
+        #instructions li {
+            list-style-type: none;
+            margin-bottom: 10px;
         }
         #game-board {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 5px;
-            margin-bottom: 20px;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
         }
         .tile {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border: 2px solid #ccc;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             text-transform: uppercase;
         }
         #keyboard {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
-            gap: 5px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 30px;
         }
         .key {
-            padding: 10px;
+            padding: 12px 8px;
             border: none;
             background-color: #d3d6da;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
+            border-radius: 5px;
+            text-transform: uppercase;
         }
         .key:hover {
             background-color: #bbb;
@@ -61,39 +116,56 @@
             background-color: #787c7e;
             color: white;
         }
-        #instructions {
-            max-width: 600px;
-            margin-bottom: 20px;
-            text-align: center;
+        .button-container {
+            display: flex;
+            justify-content: space-between;
         }
-        #reset-button {
-            padding: 10px 20px;
+        #reset-button, #hint-button {
+            padding: 12px 24px;
             font-size: 18px;
-            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #reset-button {
+            background-color: #4CAF50;
         }
         #reset-button:hover {
             background-color: #45a049;
         }
+        #hint-button {
+            background-color: #f1c40f;
+        }
+        #hint-button:hover {
+            background-color: #f39c12;
+        }
     </style>
 </head>
 <body>
-    <h1>HOT - Words</h1>
-    <div id="instructions">
-        <h2>How to Play:</h2>
-        <p>Guess the 5-letter hotel-related word in 6 tries. After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-        <ul>
-            <li>Green: The letter is correct and in the right position.</li>
-            <li>Yellow: The letter is in the word but in the wrong position.</li>
-            <li>Gray: The letter is not in the word.</li>
-        </ul>
+    <div class="header">
+        <h1>HOT - Words</h1>
+        <div class="subtitle">The Hotel-Themed Word Game</div>
     </div>
-    <div id="game-board"></div>
-    <div id="keyboard"></div>
-    <button id="reset-button">Reset Game</button>
+    <div id="game-container">
+        <div id="instructions">
+            <h2>How to Play:</h2>
+            <p>Guess the 5-letter hotel-related word in 6 tries. After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+            <ul>
+                <li>Green: The letter is correct and in the right position.</li>
+                <li>Yellow: The letter is in the word but in the wrong position.</li>
+                <li>Gray: The letter is not in the word.</li>
+            </ul>
+            <p>Need help? Click the HINT button to reveal a correct letter (but not its position).</p>
+        </div>
+        <div id="game-board"></div>
+        <div id="keyboard"></div>
+        <div class="button-container">
+            <button id="reset-button">Reset Game</button>
+            <button id="hint-button">Hint</button>
+        </div>
+    </div>
 
     <script>
         const words = ['LOBBY', 'SUITE', 'QUEEN', 'BILLS', 'POOLS', 'ROOMS', 'BEDS', 'MAIDS', 'KEYS', 'STAFF'];
@@ -104,6 +176,7 @@
         const gameBoard = document.getElementById('game-board');
         const keyboard = document.getElementById('keyboard');
         const resetButton = document.getElementById('reset-button');
+        const hintButton = document.getElementById('hint-button');
 
         function initializeGame() {
             targetWord = words[Math.floor(Math.random() * words.length)];
@@ -201,6 +274,21 @@
             }
         }
 
+        function handleHint() {
+            const keys = keyboard.querySelectorAll('.key');
+            const unusedLetters = targetWord.split('').filter(letter => 
+                !Array.from(keys).find(k => k.textContent === letter && (k.classList.contains('correct') || k.classList.contains('present')))
+            );
+            
+            if (unusedLetters.length > 0) {
+                const hintLetter = unusedLetters[Math.floor(Math.random() * unusedLetters.length)];
+                const key = Array.from(keys).find(k => k.textContent === hintLetter);
+                key.classList.add('present');
+            } else {
+                alert('No more hints available!');
+            }
+        }
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Backspace') {
                 handleBackspace();
@@ -212,6 +300,7 @@
         });
 
         resetButton.addEventListener('click', initializeGame);
+        hintButton.addEventListener('click', handleHint);
 
         // Initialize the game
         initializeGame();
