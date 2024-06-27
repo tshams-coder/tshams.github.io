@@ -2,65 +2,219 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wordle</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+    <title>HOT - Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        #game-board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .tile {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        #keyboard {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .key {
+            padding: 10px;
+            border: none;
+            background-color: #d3d6da;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .key:hover {
+            background-color: #bbb;
+        }
+        .correct {
+            background-color: #6aaa64;
+            color: white;
+        }
+        .present {
+            background-color: #c9b458;
+            color: white;
+        }
+        .absent {
+            background-color: #787c7e;
+            color: white;
+        }
+        #instructions {
+            max-width: 600px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #reset-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #reset-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1> HOTwords </h1>
-    
-    <div id="game-board">
-
+    <h1>HOT - Words</h1>
+    <div id="instructions">
+        <h2>How to Play:</h2>
+        <p>Guess the 5-letter hotel-related word in 6 tries. After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
+        <ul>
+            <li>Green: The letter is correct and in the right position.</li>
+            <li>Yellow: The letter is in the word but in the wrong position.</li>
+            <li>Gray: The letter is not in the word.</li>
+        </ul>
     </div>
+    <div id="game-board"></div>
+    <div id="keyboard"></div>
+    <button id="reset-button">Reset Game</button>
 
-    <div id="keyboard-cont">
-        <div class="first-row">
-            <button class="keyboard-button">q</button>
-            <button class="keyboard-button">w</button>
-            <button class="keyboard-button">e</button>
-            <button class="keyboard-button">r</button>
-            <button class="keyboard-button">t</button>
-            <button class="keyboard-button">y</button>
-            <button class="keyboard-button">u</button>
-            <button class="keyboard-button">i</button>
-            <button class="keyboard-button">o</button>
-            <button class="keyboard-button">p</button>
-        </div>
-        <div class="second-row">
-            <button class="keyboard-button">a</button>
-            <button class="keyboard-button">s</button>
-            <button class="keyboard-button">d</button>
-            <button class="keyboard-button">f</button>
-            <button class="keyboard-button">g</button>
-            <button class="keyboard-button">h</button>
-            <button class="keyboard-button">j</button>
-            <button class="keyboard-button">k</button>
-            <button class="keyboard-button">l</button>
-        </div>
-        <div class="third-row">
-            <button class="keyboard-button">Del</button>
-            <button class="keyboard-button">z</button>
-            <button class="keyboard-button">x</button>
-            <button class="keyboard-button">c</button>
-            <button class="keyboard-button">v</button>
-            <button class="keyboard-button">b</button>
-            <button class="keyboard-button">n</button>
-            <button class="keyboard-button">m</button>
-            <button class="keyboard-button">Enter</button>
-        </div>
-    </div>
+    <script>
+        const words = ['LOBBY', 'SUITE', 'QUEEN', 'BILLS', 'POOLS', 'ROOMS', 'BEDS', 'MAIDS', 'KEYS', 'STAFF'];
+        let targetWord = '';
+        let currentAttempt = 0;
+        let currentTile = 0;
 
-<script
-src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src="script.js" type="module"></script>
+        const gameBoard = document.getElementById('game-board');
+        const keyboard = document.getElementById('keyboard');
+        const resetButton = document.getElementById('reset-button');
+
+        function initializeGame() {
+            targetWord = words[Math.floor(Math.random() * words.length)];
+            currentAttempt = 0;
+            currentTile = 0;
+
+            // Clear game board
+            gameBoard.innerHTML = '';
+            for (let i = 0; i < 30; i++) {
+                const tile = document.createElement('div');
+                tile.classList.add('tile');
+                gameBoard.appendChild(tile);
+            }
+
+            // Clear keyboard
+            keyboard.innerHTML = '';
+            'QWERTYUIOPASDFGHJKLZXCVBNM'.split('').forEach(letter => {
+                const key = document.createElement('button');
+                key.textContent = letter;
+                key.classList.add('key');
+                key.addEventListener('click', () => handleInput(letter));
+                keyboard.appendChild(key);
+            });
+
+            // Add backspace and enter keys
+            const backspace = document.createElement('button');
+            backspace.textContent = '←';
+            backspace.classList.add('key');
+            backspace.addEventListener('click', handleBackspace);
+            keyboard.appendChild(backspace);
+
+            const enter = document.createElement('button');
+            enter.textContent = 'Enter';
+            enter.classList.add('key');
+            enter.addEventListener('click', handleEnter);
+            keyboard.appendChild(enter);
+        }
+
+        function handleInput(letter) {
+            if (currentTile < (currentAttempt + 1) * 5) {
+                const tiles = gameBoard.querySelectorAll('.tile');
+                tiles[currentTile].textContent = letter;
+                currentTile++;
+            }
+        }
+
+        function handleBackspace() {
+            if (currentTile > currentAttempt * 5) {
+                currentTile--;
+                const tiles = gameBoard.querySelectorAll('.tile');
+                tiles[currentTile].textContent = '';
+            }
+        }
+
+        function handleEnter() {
+            if (currentTile === (currentAttempt + 1) * 5) {
+                const tiles = gameBoard.querySelectorAll('.tile');
+                const guess = Array.from(tiles)
+                    .slice(currentAttempt * 5, (currentAttempt + 1) * 5)
+                    .map(tile => tile.textContent)
+                    .join('');
+                
+                checkGuess(guess);
+                currentAttempt++;
+                
+                if (guess === targetWord) {
+                    alert('Congratulations! You guessed the hotel word!');
+                } else if (currentAttempt === 6) {
+                    alert(`Game over! The hotel word was ${targetWord}`);
+                }
+            }
+        }
+
+        function checkGuess(guess) {
+            const tiles = gameBoard.querySelectorAll('.tile');
+            const keys = keyboard.querySelectorAll('.key');
+            
+            for (let i = 0; i < 5; i++) {
+                const tile = tiles[currentAttempt * 5 + i];
+                const letter = guess[i];
+                const key = Array.from(keys).find(k => k.textContent === letter);
+                
+                if (letter === targetWord[i]) {
+                    tile.classList.add('correct');
+                    key.classList.add('correct');
+                } else if (targetWord.includes(letter)) {
+                    tile.classList.add('present');
+                    if (!key.classList.contains('correct')) {
+                        key.classList.add('present');
+                    }
+                } else {
+                    tile.classList.add('absent');
+                    key.classList.add('absent');
+                }
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Backspace') {
+                handleBackspace();
+            } else if (e.key === 'Enter') {
+                handleEnter();
+            } else if (/^[A-Za-z]$/.test(e.key)) {
+                handleInput(e.key.toUpperCase());
+            }
+        });
+
+        resetButton.addEventListener('click', initializeGame);
+
+        // Initialize the game
+        initializeGame();
+    </script>
 </body>
 </html>
